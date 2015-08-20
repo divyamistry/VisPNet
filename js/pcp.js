@@ -3,9 +3,6 @@ var pc_progressive; // this has to be in golbal scope because various update
                     //   functions need to act on this object.
                     //   Unfortunately, there's no straight-forward other way
                     //   to get reference to this object.
-var parsed_csv_data; // this is in global scope because it is used several times
-                      //   and therefore makes sense to store it instead of requesting
-                      //   the same data again.
 
 // function to draw the parallel coordinate plot using given colors
 function draw_pcp(){
@@ -35,7 +32,7 @@ function draw_pcp(){
                     var sampledata = d.slice(0,100);
                     update_table(sampledata, pc_progressive);
                     update_nodelink(d);
-					setInterval(notify);
+                    setInterval(notify);
                    });
 }
 
@@ -95,6 +92,7 @@ function update_table(rows, pc_progressive){
 
 // Based on brushing the PCP, if the network is small enough (defined by node_link_maxsize variable)
 //   show it as a node-link diagram
+var nodeAColumn = "Interactor.A", nodeBColumn = "Interactor.B"; //globally defined because they're used often.
 function update_nodelink(rows){
   var node_link_maxsize = 400; //limit on number of edges
   if (rows.length < node_link_maxsize) {
@@ -102,7 +100,7 @@ function update_nodelink(rows){
     var nodes=[]; // empty the list of nodes
 
     // Get list of node names, using which we'll create list of nodes. This is the set-union of nodes involved in edges
-    var node_names = _.union(_(rows).pluck("Official.Symbol.Interactor.A"),_(rows).pluck("Official.Symbol.Interactor.B"));
+    var node_names = _.union(_(rows).pluck(nodeAColumn),_(rows).pluck(nodeBColumn));
     // Populate the nodes list with objects
     _(node_names).each(function(d){ nodes.push({"name":d}) });
 
@@ -112,20 +110,21 @@ function update_nodelink(rows){
     //TODO at some point, I should encode the node ids into the incoming CSV. Or just create objects with the ids pre-defined.
     _(rows).each(function(d,i){
       links.push(
-        {"source":_(nodes).pluck("name").indexOf(d["Official.Symbol.Interactor.A"]),
-         "target":_(nodes).pluck("name").indexOf(d["Official.Symbol.Interactor.B"])}
+        {"source":_(nodes).pluck("name").indexOf(d[nodeAColumn]),
+         "target":_(nodes).pluck("name").indexOf(d[nodeBColumn])}
       );
     });
 
     // Create space on the page to hold the graph
     // Also adding a range-slider to modify the gravity
-    var force_graph = d3.select("#forcenet").html("<input type='range' name='forcenet-gravity'></input>").append("svg")
+    var default_gravity = 0.2; // default value for the gravity slider and the force-layout gravity.
+    var force_graph = d3.select("#forcenet").html("<input type='range' name='forcenet-gravity' value='" + (default_gravity*100) +"'></input>").append("svg")
                                             .attr("width", $("#forcenet").width())
                                             .attr("height", $("#forcenet").height())
                                             .attr("overflow","auto");
 
     // Create the layout that acts upon the node/link data
-    var force_layout = d3.layout.force().gravity(0.2)
+    var force_layout = d3.layout.force().gravity(default_gravity)
                              .distance(100)
                              .charge(-100)
                              .size([$("#forcenet").width(), $("#forcenet").height()]);

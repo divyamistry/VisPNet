@@ -1,9 +1,10 @@
 /* fill the URL text field with sampel network URLs */
 $("#sample-network1").on("click",function(){
 	// H.pylori ppi network
-	$("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/physical_ppi_table_f.csv");
+  $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/SimPPI-sample-net.csv")
+	// $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/physical_ppi_table_f.csv");
 });
-$("#sample-network2").on("click",function(){
+/* $("#sample-network2").on("click",function(){
 	// human diseasome
 	$("#csv-file-url").val("");
 });
@@ -14,7 +15,7 @@ $("#sample-network3").on("click",function(){
 $("#sample-network4").on("click",function(){
 	// multiple time point network
 	$("#csv-file-url").val("");
-});
+}); */
 
 /* ****
   Following functions for the index.html
@@ -22,9 +23,6 @@ $("#sample-network4").on("click",function(){
 /* progress-bar processing */
 function notify(){
 	var remaining_paths = pc_progressive.remaining();
-	//var max_paths = pc_progressive.brushed().length; 
-	//if(!max_paths) max_paths = pc_progressive.data().length;
-	
 	if (remaining_paths < 0) {
 		$(".progress-bar").removeClass("progress-bar-striped").text("Done.");
 		return true;
@@ -33,9 +31,11 @@ function notify(){
 	//var pct_complete = (100*(max_paths-remaining_paths))/max_paths;
 	$(".progress-bar").addClass("progress-bar-striped").text("Processing...");
 }
-// https://dl.dropboxusercontent.com/u/59758/physical_ppi_table.csv
 
 /* When clicking to load csv file, show the loading text on button */
+var parsed_csv_data; // this is in global scope because it is used several times
+                      //   and therefore makes sense to store it instead of requesting
+                      //   the same data again.
 $("#csv-process-btn").on("click",function(){
 	var csvurl = $("#csv-file-url").val();
 	
@@ -76,6 +76,43 @@ $("#csv-process-btn").on("click",function(){
 		$(".samplebtn").prop('disabled',true);
 	});
 });
+
+/* if the window is resized, we redraw the plot.
+   Unfortunately, the plot won't remember brush position for now.
+*/
+$(window).resize(function(){
+	if(pc_progressive) {
+		pc_progressive.width($("#linnetpcp").width()).height($("#linnetpcp").height());
+		pc_progressive.updateAxes();
+  }
+	
+});
+
+/* If HTML5 File API is available, let user 
+   pick local files */
+$(function(){
+	// Check for the various File API support.
+	if (window.File && window.FileReader && window.FileList && window.Blob) {
+		// Great success! All the File APIs are supported.
+		console.log("File APIs support available.");
+	} else {
+		alert('The File APIs are not fully supported in this browser.');
+	}
+	
+	// empty the URL box
+	$("#csv-file-url").val("");
+	//allow user input for URL
+	$("#csv-file-url").prop('disabled', false);
+	
+	// show help for URL 
+	$('[data-toggle="popover"]').popover();
+});
+
+/* For the tabbed ui with table and other plot choices
+*/
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
 
 /* Searching the table content
 This response is based on dystroy's comment on stackoverflow
@@ -122,35 +159,3 @@ $("#namesearch").keyup(function(){
 		});
 	}, 500); // half-second time out
 });
-
-/* if the window is resized, we redraw the plot.
-   Unfortunately, the plot won't remember brush position for now.
-*/
-$(window).resize(function(){
-	if(pc_progressive) {
-		pc_progressive.width($("#linnetpcp").width()).height($("#linnetpcp").height());
-		pc_progressive.updateAxes();
-  }
-	
-});
-
-/* If HTML5 File API is available, let user 
-   pick local files */
-$(function(){
-	// Check for the various File API support.
-	if (window.File && window.FileReader && window.FileList && window.Blob) {
-		// Great success! All the File APIs are supported.
-		console.log("File APIs support available.");
-	} else {
-		alert('The File APIs are not fully supported in this browser.');
-	}
-	
-	// empty the URL box
-	$("#csv-file-url").val("");
-	//allow user input for URL
-	$("#csv-file-url").prop('disabled', false);
-	
-	// show help for URL 
-	$('[data-toggle="popover"]').popover();
-});
-
