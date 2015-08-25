@@ -9,39 +9,38 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>VisPNet</title>
+	  <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- Optional theme -->
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+      <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+      <!-- Custom styles for this template -->
+      <link rel="stylesheet" href="css/theme.css">
+      <link rel="stylesheet" href="css/vispnet.css">
+      <!-- <link rel="stylesheet" type="text/css" href="http://syntagmatic.github.io/parallel-coordinates/d3.parcoords.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<!-- Optional theme -->
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-		<!-- Custom styles for this template -->
-		<link rel="stylesheet" href="css/theme.css">
-		<link rel="stylesheet" href="css/vispnet.css">
-		<!-- <link rel="stylesheet" type="text/css" href="http://syntagmatic.github.io/parallel-coordinates/d3.parcoords.css"> -->
-		<link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <!-- <script src="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/js/ie10-viewport-bug-workaround.js"></script> -->
+      <script src="js/ie10-viewport-bug-workaround.js"></script>
 
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<!-- <script src="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/js/ie10-viewport-bug-workaround.js"></script> -->
-		<script src="js/ie10-viewport-bug-workaround.js"></script>
-
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-			
-		<!-- D3 parallel coordinates -->
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-		<script src="http://d3js.org/d3.v3.min.js"></script>
-		<script src="http://syntagmatic.github.io/parallel-coordinates/d3.parcoords.js"></script> -->
-		<script src="js/jquery-2.1.3.min.js"></script>
-		<script src="js/underscore-1.7.0.min.js"></script>
-		<script src="js/bootstrap-3.3.2.min.js"></script>
-		<script src="js/d3-3.5.5.min.js"></script>
-		<script src="js/d3.parcoords.js"></script>
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+            
+      <!-- D3 parallel coordinates -->
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      <script src="http://d3js.org/d3.v3.min.js"></script>
+      <script src="http://syntagmatic.github.io/parallel-coordinates/d3.parcoords.js"></script> -->
+      <script src="js/jquery-2.1.3.min.js"></script>
+      <script src="js/underscore-1.7.0.min.js"></script>
+      <script src="js/bootstrap-3.3.2.min.js"></script>
+      <script src="js/d3-3.5.5.min.js"></script>
+      <script src="js/d3.parcoords.js"></script>
   </head>
 
   <body role="document">
@@ -62,7 +61,7 @@
             <!-- <li class="active"><a href="#">Home</a></li> -->
             <li><a href="about.html">About</a></li>
             <!-- <li><a href="#contact">Contact</a></li> -->
-						<li><a href="help.html">Help</a></li>
+            <li><a href="help.html">Help</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -72,64 +71,100 @@
       <div class="page-header">
         <!-- <h1>VisPNet</h1> -->
         <h3>Visualization of Network using Parallel Coordinate Plots</h3>
-				<!-- Get URL for the CSV file. If the file doesn't exist, throw an error. -->
-				<form class="form-horizontal" action="#" autocomplete="off">
-				  <div class="row">
-						<div class="col-lg-12">
-							<span class="label label-info input-section-label">URL</span><a tabindex="0" class="glyphicon glyphicon-info-sign input-info-sign" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Type the URL (http://... or https://...) of a network CSV created using an <a href='help.html#csv-format-help'>extended edge-list format.</a> Then click on <span class='label label-default'>Fetch</span> button on the right." aria-hidden="true"></a>
-							<div class="input-group">
-								<input id="csv-file-url" type="text" class="form-control" placeholder="location of CSV" autocomplete="off" autofocus>
-								<span class="input-group-btn">
-									<button id="csv-process-btn" class="btn btn-default" type="button" data-loading-text="Loading..." autocomplete="off">Fetch</button>
-								</span>
-								<!-- for test: https://dl.dropboxusercontent.com/u/59758/physical_ppi_table.csv -->
-							</div>
-						</div>
-					</div>
-				</form>
-		
-				<!-- Sample networks for testing the app -->
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-xs-3">
-							<span class="label label-info input-section-label">Samples</span><a tabindex="0" class="glyphicon glyphicon-info-sign input-info-sign" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-content="These buttons will load a <a href='help.html#sample-networks-help'>sample network CSVs</a> in VisPNet." aria-hidden="true"></a>
-							<span class="input-group-btn">
-								<button id="sample-network1" class="btn btn-default samplebtn" type="button" autocomplete="off">BioGRID PPI</button>
-							</span>
-							<span class="input-group-btn">
-								<button id="sample-network3" class="btn btn-default samplebtn" type="button" autocomplete="off" disabled>Yeast Gene Co-expression</button>
-							</span>
-							<span class="input-group-btn">
-								<button id="sample-network4" class="btn btn-default samplebtn" type="button" autocomplete="off" disabled>Multiple Networks</button>
-							</span>
-					</div>
-				</div>
-				<div id="file-access-alert" class="alert alert-danger" role="alert" style="display:none;">Error accessing file</div>
+        <!-- Get URL for the CSV file. If the file doesn't exist, throw an error. -->
+        <form class="form-horizontal" action="#" autocomplete="off">
+          <div class="row">
+            <div class="col-lg-12">
+              <span class="label label-info input-section-label">URL</span>
+              <a tabindex="0" class="glyphicon glyphicon-info-sign input-info-sign" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Type the URL (http://... or https://...) of a network CSV created using an <a href='help.html#csv-format-help'>extended edge-list format.</a> Then click on <span class='label label-default'>Fetch</span> button on the right." aria-hidden="true"></a>
+              <!-- url input -->
+              <div class="input-group">
+                <input id="csv-file-url" type="text" class="form-control" placeholder="location of CSV" autocomplete="off" autofocus>
+                
+                <span class="input-group-btn">
+                  <button id="csv-process-btn" class="btn btn-default" type="button" data-loading-text="Loading..." autocomplete="off">Fetch</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+        
+        <!-- Sample networks for testing the app -->
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-xs-3">
+            <span class="label label-info input-section-label">Samples</span>
+            <a tabindex="0" class="glyphicon glyphicon-info-sign input-info-sign" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-content="These buttons will load a <a href='help.html#sample-networks-help'>sample network CSVs</a> in VisPNet." aria-hidden="true"></a>
+            
+            <span class="input-group-btn">
+              <button id="sample-network1" class="btn btn-default samplebtn" type="button" autocomplete="off">SimPPI Sample</button>
+            </span>
+            <!-- span class="input-group-btn">
+              <button id="sample-network3" class="btn btn-default samplebtn" type="button" autocomplete="off" disabled>Yeast Gene Co-expression</button>
+            </span>
+            <span class="input-group-btn">
+              <button id="sample-network4" class="btn btn-default samplebtn" type="button" autocomplete="off" disabled>Multiple Networks</button>
+            </span -->
+          </div>
+        </div>
+        <div id="file-access-alert" class="alert alert-danger" role="alert" style="display:none;">Error accessing file</div>
       </div>
-			
-			<!-- processed output including progress-bar and visualizations -->
+      
+      <!-- processed output including progress-bar and visualizations -->
       <div class="row">
         <div class="col-md-12">
-					<div class="progress">
-						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="display:none; width:100%;"></div>
-					</div>
-					<div class="alert alert-success" role="alert" id="pcp-hint"> <!-- pcp next step instruction -->
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
-						<span class="glyphicon glyphicon-pencil input-info-sign" aria-hidden="true"></span><span>You can <a tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" data-content="If you hover mouse over an axis, the axis background will get darker and mouse pointer will change to a crosshair. You can click-and-drag along the axis to select a range of values. This process is called <em>brushing</em> over an axis. You can click anywhere in the unbrushed area of an axis to get rid of the brushed range.<br><img src='img/brushing_help.gif'>" aria-hidden="true">brush over the axes</a> at any time. No need to wait for the whole plot to render.</span>
-					</div> <!-- ./ pcp next step instruction -->
-					<div id="linnetpcp" class="parcoords"></div>
-					<div style="margin-top:20px">
-					  <span class="label label-info input-section-label">Table search</span><a tabindex="0" class="glyphicon glyphicon-info-sign input-info-sign" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Once a VisPNet PCP is loaded and brushed, this table will show the corresponding entries from the fethced CSV file. This raw tabular data can be used to highlight plot lines on the PCP as well as filter the results if the filter set is very large. The table shows up to 500 table rows."></a>
-					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-search" id="basic-addon2" aria-hidden="true"></span></span>
-						<input id="namesearch" type="text" class="form-control" placeholder="Search contents within the imported CSV table" aria-describedby="basic-addon2" disabled>
-					</div>
-					<div class="scrollable-table">
-						<table id="result-table" class="table table-striped">
-						  <thead id="tablepcphead"></thead>
-							<tbody id="tablepcprows"></tbody>
-						</table>
-					</div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="display:none; width:100%;"></div>
+          </div>
+          
+          <div class="alert alert-success" role="alert" id="pcp-hint"> <!-- pcp next step instruction -->
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times</span>
+            </button>
+            <span class="glyphicon glyphicon-pencil input-info-sign" aria-hidden="true"></span>
+            <span>You can <a tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" data-content="If you hover mouse over an axis, the axis background will get darker and mouse pointer will change to a crosshair. You can click-and-drag along the axis to select a range of values. This process is called <em>brushing</em> over an axis. You can click anywhere in the unbrushed area of an axis to get rid of the brushed range.<br><img src='img/brushing_help.gif'>" aria-hidden="true">brush over the axes</a> at any time. No need to wait for the whole plot to render.</span>
+          </div> <!-- ./ pcp next step instruction -->
+          
+          <!-- Plot the PCP -->
+          <div id="linnetpcp" class="parcoords"></div>
+          <!-- ./ Plot the PCP -->
+          
+          <!-- Show the filtered reults -->
+          <div id="filtered-result-output">
+            <div style="margin-top:20px">
+              <span class="label label-info input-section-label">Filtered result</span>
+              <a tabindex="0" class="glyphicon glyphicon-info-sign input-info-sign" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Once a VisPNet PCP is loaded and brushed, this table will show the corresponding entries from the fethced CSV file. This raw tabular data can be used to highlight plot lines on the PCP as well as filter the results if the filter set is very large. The table shows up to 500 table rows."></a>
+            </div>
+            
+            <!-- tabs for table or plots -->
+            <ul id="brushed-result-tabs" class="nav nav-tabs" data-tabs="tabs">
+              <li role="presentation" class="active"><a href="#brushed-result-table" data-toggle="tab">Table</a></li>
+              <li role="presentation"><a href="#brushed-result-plots" data-toggle="tab">Plots</a></li>
+              <li role="presentation"><a href="#brushed-result-export" data-toggle="tab">Export</a></li>
+            </ul>
+            <div id="all-my-tab-panels" class="tab-content">
+              <div class="tab-pane active" id="brushed-result-table">
+                <div class="input-group">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-search" id="basic-addon2" aria-hidden="true"></span></span>
+                  <input id="namesearch" type="text" class="form-control" placeholder="Search contents within the imported CSV table" aria-describedby="basic-addon2" disabled>
+                </div>
+                <div class="scrollable-table">
+                  <table id="result-table" class="table table-striped">
+                    <thead id="tablepcphead"></thead>
+                    <tbody id="tablepcprows"></tbody>
+                  </table>
+                </div>
+              </div>
+            <div class="tab-pane" id="brushed-result-plots">
+                <h1>#brushed-result-plots</h1>
+                <p>orange orange orange orange orange</p>
+            </div>
+            <div class="tab-pane" id="brushed-result-export">
+                <h1>#brushed-result-export</h1>
+                <p>yellow yellow yellow yellow yellow</p>
+            </div>
+        </div>
+        </div>
+        <!-- ./Show the filtered results -->
         </div>
       </div>
       <div class="row">
@@ -139,6 +174,7 @@
     </div> <!-- /container -->
     <script src="js/pcp.js"></script>
     <script src="js/pcp-supporters.js"></script>
+<<<<<<< HEAD
     <!-- Google analytics -->
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -150,5 +186,7 @@
   ga('send', 'pageview');
 
 </script>
+=======
+>>>>>>> master
   </body>
 </html>
