@@ -1,8 +1,9 @@
 /* fill the URL text field with sampel network URLs */
 $("#sample-network1").on("click",function(){
 	// H.pylori ppi network
-  $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/SimPPI-sample-net.csv")
+  // $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/SimPPI-sample-net.csv")
 	// $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/physical_ppi_table_f.csv");
+	$("#csv-file-url").val("https://raw.githubusercontent.com/divyamistry/VisPNet/eb0aca34ef43e907ca091121b856e21013a68d23/data/SimPPI-sample-net.csv");
 });
 /* $("#sample-network2").on("click",function(){
 	// human diseasome
