@@ -24,9 +24,11 @@
   display: none;
 }
 
-/* d3 hiveplot */
-#hiveplot {
-  height: 500px;
+/* filtered items counter */
+#filtered-items {
+  /* width: 16em; */
+  font-weight: bold;
+  background-color: #ccc;
 }
 
 /* Result table css */
