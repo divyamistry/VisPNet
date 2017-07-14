@@ -116,7 +116,7 @@
             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="display:none; width:100%;"></div>
           </div>
           
-          <div class="alert alert-success" role="alert" id="pcp-hint"> <!-- pcp next step instruction -->
+          <div id="pcp-hint" class="alert alert-success" role="alert"> <!-- pcp next step instruction -->
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times</span>
             </button>
@@ -124,6 +124,12 @@
             <span>You can <a tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" data-content="If you hover mouse over an axis, the axis background will get darker and mouse pointer will change to a crosshair. You can click-and-drag along the axis to select a range of values. This process is called <em>brushing</em> over an axis. You can click anywhere in the unbrushed area of an axis to get rid of the brushed range.<br><img src='img/brushing_help.gif'>" aria-hidden="true">brush over the axes</a> at any time. No need to wait for the whole plot to render.</span>
           </div> <!-- ./ pcp next step instruction -->
           
+          <!-- PCP filtered counter  -->
+           <div class="filter-counter">
+            <p class="text-right">Brushed items: <span id="filtered-items">-</span> / <span id="total-items">0</span></p>
+          </div>
+          <!-- ./ PCP filtered counter  -->
+
           <!-- Plot the PCP -->
           <div id="linnetpcp" class="parcoords"></div>
           <!-- ./ Plot the PCP -->
