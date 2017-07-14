@@ -125,7 +125,8 @@ function update_nodelink(rows){
     var force_graph = d3.select("#forcenet").html("<input type='range' name='forcenet-gravity' value='" + (default_gravity*100) +"'></input>").append("svg")
                                             .attr("width", $("#forcenet").width())
                                             .attr("height", $("#forcenet").height())
-                                            .attr("overflow","auto");
+                                            .attr("overflow", "auto")
+                                            .attr("xmlns", "http://www.w3.org/2000/svg");
 
     // Create the layout that acts upon the node/link data
     var force_layout = d3.layout.force().gravity(default_gravity)
