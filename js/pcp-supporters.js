@@ -79,6 +79,29 @@ $("#csv-process-btn").on("click",function(){
 	});
 });
 
+// Based on brushing the PCP, provide a JSON download link of brushed data
+// $("#downloadGlyph").on("click", function () {
+// 	var storageObj = pc_progressive ? pc_progressive.brushed() : undefined; // brushed() is `false` if nothing brushed.
+// 	if (storageObj) {
+// 		var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+// 		$("#downloadAnchorElem").attr("href", dataStr);
+// 		$("#downloadAnchorElem").attr("download", "vispnet-filtered-" + new Date().toJSON() + ".json");
+// 		$("#downloadAnchorElem").click();
+// 	}
+// });
+
+$("#filtered-items").on("click", function(){
+	var storageObj = pc_progressive ? pc_progressive.brushed() : undefined; // brushed() is `false` if nothing brushed.
+	if (storageObj) {
+		var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+		var url = URL.createObjectURL(new Blob([dataStr], {type: 'text/json'}));
+		$("#downloadAnchorElem").attr('href', url);
+		$("#downloadAnchorElem").attr("download", "vispnet-filtered-" + new Date().toJSON() + ".json");
+		$("#downloadAnchorElem").click();
+		URL.revokeObjectURL(url);
+	}
+});
+
 /* if the window is resized, we redraw the plot.
    Unfortunately, the plot won't remember brush position for now.
 */
