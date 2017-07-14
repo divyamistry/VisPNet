@@ -30,6 +30,7 @@ function draw_pcp(){
   pc_progressive.on("brushend", function(d) {
                     // if more than 100 rows, make a truncated table.
                     var sampledata = d.slice(0,100);
+                    update_selection_counter(d.length);
                     update_table(sampledata, pc_progressive);
                     update_nodelink(d);
                     setInterval(notify);
@@ -88,6 +89,11 @@ function update_table(rows, pc_progressive){
   $.each(Object.keys(rows[0]), function(idx,propname){
 	  table.append("td").text(function(d) { return d[propname]; });
   });
+}
+
+// Based on brushing the PCP, update the brushed items counter
+function update_selection_counter(selection_size) {
+  $("#filtered-items").text(selection_size);
 }
 
 // Based on brushing the PCP, if the network is small enough (defined by node_link_maxsize variable)

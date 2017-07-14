@@ -25,10 +25,10 @@
 }
 
 /* filtered items counter */
-#filtered-items {
+.filter-counter {
   /* width: 16em; */
   font-weight: bold;
-  background-color: #ccc;
+  background-color: #eee;
 }
 
 /* Result table css */

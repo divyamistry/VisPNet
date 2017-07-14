@@ -58,7 +58,8 @@ $("#csv-process-btn").on("click",function(){
 		parsed_csv_data = rows;
 		$("#csv-file-url").prop('disabled', true);
 		$("#csv-process-btn").html('Done!').prop('disabled', true);
-		
+		$("#total-items").text(parsed_csv_data.length || 0);
+
 		// once the data has been loaded, we can display the pcp
 		$("#pcp-hint").show();
 		$("#linnetpcp").show();
