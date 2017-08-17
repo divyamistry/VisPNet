@@ -126,9 +126,20 @@
           
           <!-- PCP filtered counter  -->
            <div class="filter-counter">
-            <p class="text-right">Brushed items: <span id="filtered-items">-</span> / <span id="total-items">0</span></p>
+            <p class="text-right">
+              Brushed items: 
+              <span id="filtered-items">-</span> / <span id="total-items">0</span>&nbsp;
+              <button id="downloadGlyph" type="button" title="Download brushed items as JSON" class="btn btn-default">
+                <span class="glyphicon glyphicon-save" style="text-decoration: none">
+                </span>
+              </button>
+            </p>
           </div>
           <!-- ./ PCP filtered counter  -->
+
+          <!-- Download brushed result  -->
+          <a id="downloadAnchorElem" style="display: none; text-decoration: none"></a>
+          <!-- ./ Download brushed result  -->
 
           <!-- Plot the PCP -->
           <div id="linnetpcp" class="parcoords"></div>
@@ -154,7 +165,7 @@
                   <input id="namesearch" type="text" class="form-control" placeholder="Search contents within the imported CSV table" aria-describedby="basic-addon2" disabled>
                 </div>
                 <div class="scrollable-table">
-                  <table id="result-table" class="table table-striped">
+                  <table id="result-table" class="table table-striped" onscroll="console.log('scrolled')">
                     <thead id="tablepcphead"></thead>
                     <tbody id="tablepcprows"></tbody>
                   </table>

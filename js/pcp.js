@@ -29,7 +29,7 @@ function draw_pcp(){
   // When the axes get brushed, we need to update table, and redraw the node-link layout
   pc_progressive.on("brushend", function(d) {
                     // if more than 100 rows, make a truncated table.
-                    var sampledata = d.slice(0,100);
+                    var sampledata = d.slice(0,500);
                     update_selection_counter(d.length);
                     update_table(sampledata, pc_progressive);
                     update_nodelink(d);
@@ -73,8 +73,6 @@ function update_table(rows, pc_progressive){
 		$("#tablepcprows").html("");
 		return;
 	}
-
-
 
   // write the table header
   d3.select("#tablepcphead").html("").selectAll("th")
@@ -127,7 +125,8 @@ function update_nodelink(rows){
     var force_graph = d3.select("#forcenet").html("<input type='range' name='forcenet-gravity' value='" + (default_gravity*100) +"'></input>").append("svg")
                                             .attr("width", $("#forcenet").width())
                                             .attr("height", $("#forcenet").height())
-                                            .attr("overflow","auto");
+                                            .attr("overflow", "auto")
+                                            .attr("xmlns", "http://www.w3.org/2000/svg");
 
     // Create the layout that acts upon the node/link data
     var force_layout = d3.layout.force().gravity(default_gravity)
@@ -170,3 +169,5 @@ function update_nodelink(rows){
  * Some extra catch-all scrap work for sample use.
  */
 //TODO window.onresize should rescale the viewer
+
+
