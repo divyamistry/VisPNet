@@ -1,4 +1,19 @@
 /* d3 node-link diagram */
+
+#gravity-slider-container {
+  margin-top: 10px;
+}
+
+#forcenet-gravity {
+  margin-top: 0.3em;
+  width: 90%;
+  float: right;
+}
+
+#forcenet-title {
+  margin-top: 20px;
+}
+
 .link {
   stroke: #ccc;
 }
