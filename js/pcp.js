@@ -100,6 +100,9 @@ var nodeAColumn = "Interactor.A", nodeBColumn = "Interactor.B"; //globally defin
 function update_nodelink(rows){
   var node_link_maxsize = 400; //limit on number of edges
   if (rows.length < node_link_maxsize) {
+    d3.select("#forcenet-title").html("").append("h3").text("Node-Link layout");
+    d3.select("#forcenet").html("");
+    d3.select("#gravity-slider-container").style("visibility","visible");
     var links=[]; // empty the list of edges
     var nodes=[]; // empty the list of nodes
 
@@ -122,7 +125,8 @@ function update_nodelink(rows){
     // Create space on the page to hold the graph
     // Also adding a range-slider to modify the gravity
     var default_gravity = 0.2; // default value for the gravity slider and the force-layout gravity.
-    var force_graph = d3.select("#forcenet").html("<input type='range' name='forcenet-gravity' value='" + (default_gravity*100) +"'></input>").append("svg")
+    $("#gravity-slider-container").html("<b>Gravity: </b><input type='range' id='forcenet-gravity' name='forcenet-gravity' value='" + (default_gravity*100) +"'></input>");
+    var force_graph = d3.select("#forcenet").append("svg")
                                             .attr("width", $("#forcenet").width())
                                             .attr("height", $("#forcenet").height())
                                             .attr("overflow", "auto")
@@ -160,8 +164,11 @@ function update_nodelink(rows){
     });
 
   } else { // If there are too many edges to show, display a notice asking user to make smaller brushed data choice.
-    d3.select("#forcenet").html("").append("h3").text("Node-Link layout");
-    d3.select("#forcenet").append("text").attr("style","color:red").text("Need a selection smaller than " + node_link_maxsize + " edges.")
+    d3.select("#forcenet").html("");
+    d3.select("#gravity-slider-container").style("visibility","hidden");
+    if (d3.select("#forcenet-title > text")[0][0] == null) {
+      d3.select("#forcenet-title").append("text").attr("style","color:red").text("Need a selection smaller than " + node_link_maxsize + " edges.")
+    }
   }
 }
 
