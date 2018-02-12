@@ -102,13 +102,13 @@ $("#downloadGlyph").on("click", function () {
 /* if the window is resized, we redraw the plot.
    Unfortunately, the plot won't remember brush position for now.
 */
-$(window).resize(function(){
-	if(pc_progressive) {
-		pc_progressive.width($("#linnetpcp").width()).height($("#linnetpcp").height());
-		pc_progressive.updateAxes();
-  }
+// $(window).resize(function(){
+// 	if(pc_progressive) {
+// 		pc_progressive.width($("#linnetpcp").width()).height($("#linnetpcp").height());
+// 		pc_progressive.updateAxes();
+//   }
 	
-});
+// });
 
 /* If HTML5 File API is available, let user 
    pick local files */

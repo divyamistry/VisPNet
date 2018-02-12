@@ -230,6 +230,7 @@ d3.parcoords = function(config) {
             if (__.types[p] == "string" && (uniques > 60 || uniques < 2)) {
                 return false;
             }
+            console.log("Found axis with " + uniques + " unique ordinal values. That's too crowded for an axis, therefore, not showing that axis here.");
             return true;
         })); // DIVYA's mod: MISSING AXES are probably due to this
 

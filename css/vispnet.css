@@ -23,7 +23,9 @@
 }
 #forcenet {
   margin-top: 10px;
-  height: 500px;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: 500px;
 }
 
 /* d3.parcoord */
@@ -33,6 +35,9 @@
 }
 #linnetpcp {
   display: none;
+  min-width: 1024px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #pcp-hint {
