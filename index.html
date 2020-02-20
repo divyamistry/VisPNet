@@ -11,16 +11,15 @@
 	  <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- Optional theme -->
-      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
       <link rel="stylesheet" href="css/bootstrap-theme.min.css">
       <!-- Custom styles for this template -->
       <link rel="stylesheet" href="css/theme.css">
       <link rel="stylesheet" href="css/vispnet.css">
-      <!-- <link rel="stylesheet" type="text/css" href="http://syntagmatic.github.io/parallel-coordinates/d3.parcoords.css"> -->
       <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="favicon.ico">
 
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <!-- <script src="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/js/ie10-viewport-bug-workaround.js"></script> -->
       <script src="js/libs/ie10-viewport-bug-workaround.js"></script>
 
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,14 +29,10 @@
       <![endif]-->
             
       <!-- D3 parallel coordinates -->
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-      <script src="http://d3js.org/d3.v3.min.js"></script>
-      <script src="http://syntagmatic.github.io/parallel-coordinates/d3.parcoords.js"></script> -->
       <script src="js/libs/jquery-2.1.3.min.js"></script>
       <script src="js/libs/underscore-1.7.0.min.js"></script>
       <script src="js/libs/bootstrap-3.3.2.min.js"></script>
+      <script src="js/libs/sylvester-0.1.3.min.js"></script>
       <script src="js/libs/d3-3.5.5.min.js"></script>
       <script src="js/libs/d3.parcoords.js"></script>
   </head>
@@ -57,9 +52,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <!-- <li class="active"><a href="#">Home</a></li> -->
             <li><a href="about.html">About</a></li>
-            <!-- <li><a href="#contact">Contact</a></li> -->
             <li><a href="help.html">Help</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -68,7 +61,6 @@
 
     <div class="container theme-showcase" role="main">
       <div class="page-header">
-        <!-- <h1>VisPNet</h1> -->
         <h3>Visualization of Network using Parallel Coordinate Plots</h3>
         <!-- Get URL for the CSV file. If the file doesn't exist, throw an error. -->
         <form class="form-horizontal" action="#" autocomplete="off">
@@ -97,12 +89,6 @@
             <span class="input-group-btn">
               <button id="sample-network1" class="btn btn-default samplebtn" type="button" autocomplete="off" autofocus>SimPPI Sample</button>
             </span>
-            <!-- span class="input-group-btn">
-              <button id="sample-network3" class="btn btn-default samplebtn" type="button" autocomplete="off" disabled>Yeast Gene Co-expression</button>
-            </span>
-            <span class="input-group-btn">
-              <button id="sample-network4" class="btn btn-default samplebtn" type="button" autocomplete="off" disabled>Multiple Networks</button>
-            </span -->
           </div>
         </div>
         <div id="file-access-alert" class="alert alert-danger" role="alert" style="display:none;">Error accessing file</div>
@@ -153,9 +139,6 @@
             
             <!-- tabs for table or plots -->
             <ul id="brushed-result-tabs" class="nav nav-tabs" data-tabs="tabs">
-              <!--li role="presentation" class="active"><a href="#brushed-result-table" data-toggle="tab">Table</a></li>
-              < li role="presentation"><a href="#brushed-result-plots" data-toggle="tab">Plots</a></li>
-              <li role="presentation"><a href="#brushed-result-export" data-toggle="tab">Export</a></li -->
             </ul>
             <div id="all-my-tab-panels" class="tab-content">
               <div class="tab-pane active" id="brushed-result-table">
@@ -164,20 +147,12 @@
                   <input id="namesearch" type="text" class="form-control" placeholder="Search contents within the imported CSV table" aria-describedby="basic-addon2" disabled>
                 </div>
                 <div class="scrollable-table">
-                  <table id="result-table" class="table table-striped" onscroll="console.log('scrolled')">
+                  <table id="result-table" class="table table-striped">
                     <thead id="tablepcphead"></thead>
                     <tbody id="tablepcprows"></tbody>
                   </table>
                 </div>
               </div>
-            <div class="tab-pane" id="brushed-result-plots">
-                <h1>#brushed-result-plots</h1>
-                <p>orange orange orange orange orange</p>
-            </div>
-            <div class="tab-pane" id="brushed-result-export">
-                <h1>#brushed-result-export</h1>
-                <p>yellow yellow yellow yellow yellow</p>
-            </div>
         </div>
         </div>
         <!-- ./Show the filtered results -->
@@ -192,13 +167,5 @@
     </div> <!-- /container -->
     <script src="js/pcp.js"></script>
     <script src="js/pcp-supporters.js"></script>
-    <!-- Google analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-54929930-2', 'auto');
-      ga('send', 'pageview');
-    </script>
   </body>
 </html>

@@ -1,3 +1,7 @@
+const colorby = "Experimental.System";
+const nodeAColumn = "Interactor.A";
+const nodeBColumn = "Interactor.B";
+
 // parallel plot
 var pc_progressive; // this has to be in golbal scope because various update
                     //   functions need to act on this object.
@@ -6,12 +10,14 @@ var pc_progressive; // this has to be in golbal scope because various update
 
 // function to draw the parallel coordinate plot using given colors
 function draw_pcp(){
-  var colorby = "Experimental.System";
-  // var colorby = "class";
 
   // create the parallel coordinate plot using the d3.parcoords() library
   pc_progressive = d3.parcoords()("#linnetpcp")
                      .data(parsed_csv_data)
+                     .bundleDimension("Experimental.System")
+                     .bundlingStrength(0)
+                     .smoothness(0)
+                     .showControlPoints(false)
                      .color(pick_colors(colorby)) // Pick colors based on "Experimental System"
                                                   //   that was used for PPI edge BioGRID data
                                                   //   provides this detail
@@ -41,7 +47,8 @@ function draw_pcp(){
 //   I return a function that can be passed on directly to the d3.parcoord.color()
 function pick_colors(group_name){
   var colors = {}; // colors for various "types"/groupings of edges if metadata allows for it
-  var colorgen = d3.scale.category20b(); // funciton to generate the colors
+  // var colorgen = d3.scale.category20b(); // funciton to generate the colors
+  var colorgen = d3.scale.category10(); // funciton to generate the colors
 
   // I want to color the edges based on the group_name
   _(parsed_csv_data).chain().pluck(group_name).uniq()
@@ -96,7 +103,6 @@ function update_selection_counter(selection_size) {
 
 // Based on brushing the PCP, if the network is small enough (defined by node_link_maxsize variable)
 //   show it as a node-link diagram
-var nodeAColumn = "Interactor.A", nodeBColumn = "Interactor.B"; //globally defined because they're used often.
 function update_nodelink(rows){
   var node_link_maxsize = 400; //limit on number of edges
   if (rows.length < node_link_maxsize) {
@@ -114,7 +120,6 @@ function update_nodelink(rows){
     // Populate the list of edges with "source" and "target" properties for d3.force layout
     // The force layout needs nodes as integer ids, and not the string names, so here I'm
     //   using the indexOf() sadness for looking up the node id.
-    //TODO at some point, I should encode the node ids into the incoming CSV. Or just create objects with the ids pre-defined.
     _(rows).each(function(d,i){
       links.push(
         {"source":_(nodes).pluck("name").indexOf(d[nodeAColumn]),
@@ -171,10 +176,3 @@ function update_nodelink(rows){
     }
   }
 }
-
-/*
- * Some extra catch-all scrap work for sample use.
- */
-//TODO window.onresize should rescale the viewer
-
-

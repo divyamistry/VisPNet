@@ -1,22 +1,9 @@
 /* fill the URL text field with sampel network URLs */
 $("#sample-network1").on("click",function(){
-	// H.pylori ppi network
-  // $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/SimPPI-sample-net.csv")
-	// $("#csv-file-url").val("https://dl.dropboxusercontent.com/u/59758/physical_ppi_table_f.csv");
-	$("#csv-file-url").val("https://raw.githubusercontent.com/divyamistry/VisPNet/eb0aca34ef43e907ca091121b856e21013a68d23/data/SimPPI-sample-net.csv");
+	// network simulated and intrxns randomly arranged from h.pylori ppi.
+	// $("#csv-file-url").val("https://raw.githubusercontent.com/divyamistry/VisPNet/eb0aca34ef43e907ca091121b856e21013a68d23/data/SimPPI-sample-net.csv");
+	$("#csv-file-url").val("data/hi-ii-14_with_hpm-14.generic.csv");
 });
-/* $("#sample-network2").on("click",function(){
-	// human diseasome
-	$("#csv-file-url").val("");
-});
-$("#sample-network3").on("click",function(){
-	// yeast coexpression network
-	$("#csv-file-url").val("");
-});
-$("#sample-network4").on("click",function(){
-	// multiple time point network
-	$("#csv-file-url").val("");
-}); */
 
 /* ****
   Following functions for the index.html
@@ -50,7 +37,6 @@ $("#csv-process-btn").on("click",function(){
 	$("#csv-process-btn").button('loading');
 	
 	// get the file and start processing
-	// d3.csv('data/physical_ppi_table.csv').get().on("error", function(){
 	d3.csv(csvurl).get().on("error", function(){
 		$("#file-access-alert").show();
 		$("#csv-process-btn").button('reset');
@@ -98,17 +84,6 @@ $("#downloadGlyph").on("click", function () {
 		URL.revokeObjectURL(url);
 	}
 });
-
-/* if the window is resized, we redraw the plot.
-   Unfortunately, the plot won't remember brush position for now.
-*/
-// $(window).resize(function(){
-// 	if(pc_progressive) {
-// 		pc_progressive.width($("#linnetpcp").width()).height($("#linnetpcp").height());
-// 		pc_progressive.updateAxes();
-//   }
-	
-// });
 
 /* If HTML5 File API is available, let user 
    pick local files */
